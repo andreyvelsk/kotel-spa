@@ -1,8 +1,15 @@
 <template>
   <div>
     <ul class="nav-menu bg-dark">
-          <li class="nav-item"><a href="index.php">Главная</a></li>
-          <li class="nav-item"><a href="report.php">About</a></li>
+      <router-link
+        v-for='link in this.$store.state.menu.menu'
+        tag="li"
+        class="nav-item"
+        :to='link.link'
+        :key="link.title"
+        >
+          <a>{{link.title}}</a>
+        </router-link>
     </ul>
   </div>
 
