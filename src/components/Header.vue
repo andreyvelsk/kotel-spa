@@ -26,6 +26,7 @@
       border-color: #bce8f1
       list-style: none
       margin: 0
+      margin-bottom: 20px
       display: flex
       flex-flow: row wrap
       justify-content: flex-start
