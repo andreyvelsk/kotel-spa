@@ -32,6 +32,7 @@
       display: flex
       flex-flow: row wrap
       justify-content: flex-start
+      padding-left: 15px
 
     &-item
       a
