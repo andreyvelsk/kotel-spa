@@ -5,11 +5,11 @@
         <div class="row">
 
             <card-sensor
-            v-for="i in 5"
-            :key="i"
-            sensorName='test sensor'
-            sensorValue='36.6'
-            :sensorDate='new Date()'
+            v-for="sensor in this.$store.state.sensors.sensors"
+            :key="sensor.name"
+            :sensorName='sensor.name'
+            :sensorValue='sensor.value'
+            :sensorDate='sensor.datetime'
             >
             </card-sensor>
           <!-- /.col-md-6 -->
