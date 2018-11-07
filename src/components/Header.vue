@@ -7,6 +7,8 @@
         class="nav-item"
         :to='link.link'
         :key="link.title"
+        active-class="nav-item__active"
+        exact
         >
           <a>{{link.title}}</a>
         </router-link>
@@ -38,7 +40,7 @@
         padding: 15px 20px
         text-decoration: none
         &:hover
-          background-color: #17a2b8
-        &:active
+          background-color: #ccc
+      &__active
           background-color: #17a2b8
 </style>
