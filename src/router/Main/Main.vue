@@ -9,7 +9,7 @@
             :key="sensor.name"
             :sensorName='sensor.name'
             :sensorValue='sensor.value'
-            :sensorDate='sensor.datetime'
+            :sensorDate='sensor.vdatetime'
             >
             </card-sensor>
           <!-- /.col-md-6 -->
@@ -18,7 +18,7 @@
       </div>
       <!-- /.col-xl-6 -->
 
-      <div class="col-md-6">
+      <div class="col-xl-6">
         <img src="https://i.ytimg.com/vi/WkpbUn-0vPw/maxresdefault.jpg" alt="fff">
       </div>
     </div>

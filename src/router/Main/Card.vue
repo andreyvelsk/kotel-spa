@@ -1,5 +1,5 @@
 <template>
-  <div class="col-xl-3 col-lg-6 col-sm-6">
+  <div class="col-sm-6">
     <div class="card">
       <div class="card-header bg-info text-white">
         {{sensorName}}
