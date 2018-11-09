@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import Vuex from 'vuex'
+import VueResource from 'vue-resource'
 
 // Bootstrap import
 import BootstrapVue from 'bootstrap-vue'
@@ -13,6 +14,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 Vue.use(Vuex)
+Vue.use(VueResource)
+
+Vue.http.options.root = 'http://194.67.211.50/' // адрес api
 
 Vue.config.productionTip = false
 
