@@ -1,17 +1,31 @@
 import {Line} from 'vue-chartjs'
-
 export default ({
   mixins: [Line],
   data () {
     return {
-      gradient: null,
-      gradient2: null
+      datacollection: {
+        labels: this.$store.getters.getLabels,
+        datasets: [
+          {
+            label: 't pod',
+            data: this.$store.getters.getData
+          }
+        ]
+      }
     }
   },
   mounted () {
-    this.renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: this.$store.state.reportcharts.datasets
-    }, {responsive: true, maintainAspectRatio: false})
+    console.log('LineChart mounted')
+    console.log(this.datacollection)
+    this.renderChart(this.datacollection,
+      {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: true,
+          onClick: function () { return 0 }
+        }
+      }
+    )
   }
 })

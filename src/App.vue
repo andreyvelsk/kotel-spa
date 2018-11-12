@@ -14,7 +14,6 @@ export default {
   },
   created () {
     // запись из api to vuex
-
     console.log('load sensors from api App.vue')
 
     this.resource = this.$resource('getjson.php')
