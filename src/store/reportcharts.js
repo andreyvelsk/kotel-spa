@@ -1,14 +1,12 @@
 export default {
   state: {
-    chartdataValue: [],
-    chartdataLabels: [],
+    chartdata: [],
     isLoaded: false
   },
   mutations: {
     setChartDatasetM (state, payload) {
       // state.datasets.data = payload.map(data => parseInt(data.value, 10))
-      state.chartdataLabels = payload.map(data => data.vdatetime)
-      state.chartdataValue = payload.map(data => Number(data.value))
+      state.chartdata = payload
       state.isLoaded = true
     }
   },
@@ -19,10 +17,10 @@ export default {
   },
   getters: {
     getLabels (state) {
-      return state.chartdataLabels
+      return state.chartdata.map(data => data.vdatetime)
     },
     getData (state) {
-      return state.chartdataValue
+      return state.chartdata.map(data => data.value)
     }
   }
 }
