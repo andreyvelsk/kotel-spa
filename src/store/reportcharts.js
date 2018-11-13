@@ -27,7 +27,18 @@ export default {
       return state.chartdata.map(data => data.vdatetime)
     },
     getData (state) {
-      return state.chartdata.map(data => data.value)
+      let datacollection = {
+        labels: state.chartdata.map(data => data.vdatetime),
+        datasets: [
+          {
+            label: 't подачи',
+            backgroundColor: 'rgba(255,0,0,0.4)',
+            data: state.chartdata.map(data => data.value)
+          }
+        ]
+      }
+
+      return datacollection
     }
   }
 }

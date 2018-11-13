@@ -4,6 +4,7 @@
             <h2>Отчет по температуре</h2>
             <line-example
             v-if='this.$store.state.reportcharts.isLoaded'
+            :chartData='this.$store.getters.getData'
             ></line-example>
             <button class="btn btn-success"
             @click="addData"
