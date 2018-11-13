@@ -1,7 +1,10 @@
 import {Line, mixins} from 'vue-chartjs'
+const { reactiveProp } = mixins
 
 export default ({
-  mixins: [Line, mixins.reactiveProp],
+  extends: Line,
+  mixins: [reactiveProp],
+  props: ['chartData'],
   data () {
     return {
       datacollection: {
@@ -24,9 +27,14 @@ export default ({
       }
     }
   },
+  computed: {
+    rendChart () {
+      this.renderChart(this.datacollection, this.options)
+    }
+  },
   mounted () {
     console.log('LineChart mounted')
     console.log(this.datacollection)
-    this.renderChart(this.datacollection, this.options)
+    this.rendChart()
   }
 })

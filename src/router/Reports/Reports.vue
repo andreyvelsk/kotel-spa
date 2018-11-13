@@ -5,7 +5,9 @@
             <line-example
             v-if='this.$store.state.reportcharts.isLoaded'
             ></line-example>
-            <button class="btn btn-success">LOAD</button>
+            <button class="btn btn-success"
+            @click="addData"
+            >LOAD</button>
         </div>
     </div>
 </template>
@@ -16,6 +18,12 @@ import LineExample from './LineCharts'
 export default {
   components: {
     LineExample
+  },
+  methods: {
+      addData () {
+          this.$store.dispatch('addData')
+          console.log(this.$store.state.reportcharts.chartdata)
+      }
   },
   computed: {
       getChartData() {

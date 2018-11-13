@@ -8,11 +8,18 @@ export default {
       // state.datasets.data = payload.map(data => parseInt(data.value, 10))
       state.chartdata = payload
       state.isLoaded = true
+    },
+    addDataM (state) {
+      state.chartdata[state.chartdata.length - 1].value = '45.5'
+      console.log(state.chartdata)
     }
   },
   actions: {
     setChartDataset (context, payload) {
       context.commit('setChartDatasetM', payload)
+    },
+    addData (context) {
+      context.commit('addDataM')
     }
   },
   getters: {
