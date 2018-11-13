@@ -4,7 +4,7 @@
             <h2>Отчет по температуре</h2>
             <line-example
             v-if='this.$store.state.reportcharts.isLoaded'
-            :chartData='this.$store.getters.getData'
+            :chartData='this.$store.state.reportcharts.chartdata'
             ></line-example>
             <button class="btn btn-success"
             @click="addData"
@@ -22,13 +22,13 @@ export default {
   },
   methods: {
       addData () {
-          this.$store.dispatch('addData')
-          console.log(this.$store.state.reportcharts.chartdata)
+        this.$store.dispatch('addData')
+        console.log(this.$store.state.reportcharts.chartdata)
       }
   },
   computed: {
       getChartData() {
-          return this.$store.getters.getLabels
+        return this.$store.getters.getLabels
       }
   },
   created () {

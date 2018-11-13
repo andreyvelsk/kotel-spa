@@ -8,10 +8,14 @@ export default {
       // state.datasets.data = payload.map(data => parseInt(data.value, 10))
       state.chartdata = payload
       state.isLoaded = true
+      console.log('setChartDataset')
+
+      for (let i = 0; i < state.chartdata.datasets.length; i++) {
+        state.chartdata.datasets[i]['backgroundColor'] = 'rgba(255,0,0,0.3)'
+      }
     },
     addDataM (state) {
       state.chartdata[state.chartdata.length - 1].value = '45.5'
-      console.log(state.chartdata)
     }
   },
   actions: {
@@ -26,19 +30,7 @@ export default {
     getLabels (state) {
       return state.chartdata.map(data => data.vdatetime)
     },
-    getData (state) {
-      let datacollection = {
-        labels: state.chartdata.map(data => data.vdatetime),
-        datasets: [
-          {
-            label: 't подачи',
-            backgroundColor: 'rgba(255,0,0,0.4)',
-            data: state.chartdata.map(data => data.value)
-          }
-        ]
-      }
-
-      return datacollection
+    getData (state) {     
     }
   }
 }

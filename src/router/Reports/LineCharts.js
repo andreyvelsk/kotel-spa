@@ -12,6 +12,14 @@ export default ({
         legend: {
           display: true,
           onClick: function () { return 0 }
+        },
+        scales: {
+          xAxes: [{
+            type: 'time',
+            time: {
+              unit: 'hour'
+            }
+          }]
         }
       }
     }
