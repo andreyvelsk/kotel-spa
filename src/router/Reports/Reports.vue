@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-      {{this.$store.getters.getData}}
         <div class="Chart">
             <h2>Отчет по температуре</h2>
             <line-example
@@ -8,7 +7,7 @@
             :chartData='this.$store.getters.getData'
             ></line-example>
             <button class="btn btn-success"
-            @click="addData"
+            @click="getApiData(6)"
             >LOAD</button>
         </div>
     </div>
@@ -26,10 +25,10 @@ export default {
       this.$store.dispatch('addData')
       console.log(this.$store.state.reportcharts.chartdata)
     },
-    getApiData () {
-      this.$api.get('getchartdata.php')
+    getApiData (interval) {
+      this.$api.get('getchartdata.php?interval=' + interval)
         .then(payload => this.$store.dispatch('setChartDataset', payload.data))
-      console.log('loaded')
+      console.log('data from api loaded')
     }
   },
   computed: {
@@ -37,10 +36,8 @@ export default {
       return this.$store.getters.getLabels
     }
   },
-  mounted () {
-    setInterval(() => {
-      this.getApiData()
-    }, 1000)
+  created () {
+    this.getApiData(5)
   }
 }
 </script>

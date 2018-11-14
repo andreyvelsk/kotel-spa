@@ -11,10 +11,6 @@ import Header from '@/components/Header'
 export default {
   components: {
     headerPage: Header
-  },
-  created () {
-    this.$api.get('getjson.php')
-      .then(payload => this.$store.dispatch('setSensorsAssync', payload.data))
   }
 }
 </script>
