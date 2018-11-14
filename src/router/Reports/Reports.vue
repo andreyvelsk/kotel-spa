@@ -22,25 +22,17 @@ export default {
     LineExample
   },
   methods: {
-      addData () {
-        this.$store.dispatch('addData')
-        console.log(this.$store.state.reportcharts.chartdata)
-      }
+    addData () {
+      this.$store.dispatch('addData')
+      console.log(this.$store.state.reportcharts.chartdata)
+    }
   },
   computed: {
-      getChartData() {
-        return this.$store.getters.getLabels
-      }
+    getChartData () {
+      return this.$store.getters.getLabels
+    }
   },
   created () {
-    console.log(this.$store.state.reportcharts.isLoaded)
-    // запись из api to vuex
-    console.log('load chartdata from api Report.vue')
-
-    this.resource = this.$resource('getchartdata.php?interval=3')
-    this.resource.get().then(response => response.json())
-    .then(payload => this.$store.dispatch('setChartDataset', payload))
-
   }
 }
 </script>
