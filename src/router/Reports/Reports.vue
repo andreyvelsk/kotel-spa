@@ -1,10 +1,11 @@
 <template>
     <div class="container">
+      {{this.$store.getters.getData}}
         <div class="Chart">
             <h2>Отчет по температуре</h2>
             <line-example
             v-if='this.$store.state.reportcharts.isLoaded'
-            :chartData='this.$store.state.reportcharts.chartdata'
+            :chartData='this.$store.getters.getData'
             ></line-example>
             <button class="btn btn-success"
             @click="addData"

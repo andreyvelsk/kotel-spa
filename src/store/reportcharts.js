@@ -30,7 +30,8 @@ export default {
     getLabels (state) {
       return state.chartdata.map(data => data.vdatetime)
     },
-    getData (state) {     
+    getData (state) {
+      return state.chartdata
     }
   }
 }
