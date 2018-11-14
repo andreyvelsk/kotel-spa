@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 export default {
   state: {
     chartdata: [],
@@ -11,11 +13,11 @@ export default {
       console.log('setChartDataset')
 
       for (let i = 0; i < state.chartdata.datasets.length; i++) {
-        state.chartdata.datasets[i]['backgroundColor'] = 'rgba(255,0,0,0.3)'
+        Vue.set(state.chartdata.datasets[i], 'backgroundColor', 'rgba(255,0,0,0.3)')
       }
     },
     addDataM (state) {
-      state.chartdata[state.chartdata.length - 1].value = '45.5'
+      // state.chartdata[state.chartdata.length - 1].value = '45.5'
     }
   },
   actions: {
