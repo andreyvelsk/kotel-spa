@@ -25,6 +25,11 @@ export default {
     addData () {
       this.$store.dispatch('addData')
       console.log(this.$store.state.reportcharts.chartdata)
+    },
+    getApiData () {
+      this.$api.get('getchartdata.php')
+        .then(payload => this.$store.dispatch('setChartDataset', payload.data))
+      console.log('loaded')
     }
   },
   computed: {
@@ -32,7 +37,10 @@ export default {
       return this.$store.getters.getLabels
     }
   },
-  created () {
+  mounted () {
+    setInterval(() => {
+      this.getApiData()
+    }, 1000)
   }
 }
 </script>

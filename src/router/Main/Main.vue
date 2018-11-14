@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid">
+    {{this.$store.state.sensors.sensors}}
     <div class="row">
       <div class="col-xl-6">
         <div class="row">
@@ -32,6 +33,10 @@ import Card from './Card'
 export default {
   components: {
     cardSensor: Card
+  },
+  created () {
+    this.$api.get('getjson.php')
+      .then(payload => this.$store.dispatch('setSensorsAssync', payload.data))
   }
 }
 </script>

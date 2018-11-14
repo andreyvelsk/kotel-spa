@@ -13,6 +13,8 @@ export default {
     headerPage: Header
   },
   created () {
+    this.$api.get('getjson.php')
+      .then(payload => this.$store.dispatch('setSensorsAssync', payload.data))
   }
 }
 </script>
