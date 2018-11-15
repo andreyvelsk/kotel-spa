@@ -11,9 +11,15 @@ export default {
       state.chartdata = payload
       state.isLoaded = true
       console.log('setChartDataset')
+      console.log(state.chartdata)
 
       for (let i = 0; i < state.chartdata.datasets.length; i++) {
-        Vue.set(state.chartdata.datasets[i], 'backgroundColor', 'rgba(255,0,0,0.3)')
+        if (i === 0) {
+          Vue.set(state.chartdata.datasets[i], 'backgroundColor', 'rgba(255,0,0,0.3)')
+        }
+        if (i === 1) {
+          Vue.set(state.chartdata.datasets[i], 'backgroundColor', 'rgba(0,244,0,0.3)')
+        }
       }
     },
     addDataM (state) {

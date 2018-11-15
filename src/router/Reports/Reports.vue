@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+      {{this.$store.getters.getData}}
         <div class="Chart">
             <h2>Отчет по температуре</h2>
             <line-example
@@ -26,7 +27,7 @@ export default {
       console.log(this.$store.state.reportcharts.chartdata)
     },
     getApiData (interval) {
-      this.$api.get('getchartdata.php?interval=' + interval)
+      this.$api.get('getchartdata.php?interval=' + interval + '&sensor[]=2&sensor[]=4')
         .then(payload => this.$store.dispatch('setChartDataset', payload.data))
       console.log('data from api loaded')
     }
@@ -37,7 +38,7 @@ export default {
     }
   },
   created () {
-    this.getApiData(5)
+    this.getApiData(25)
   }
 }
 </script>
