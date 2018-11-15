@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-      {{this.$store.getters.getData}}
         <div class="Chart">
             <h2>Отчет по температуре</h2>
             <line-example
@@ -11,6 +10,7 @@
             @click="getApiData(6)"
             >LOAD</button>
         </div>
+        {{this.$store.getters.getData}}
     </div>
 </template>
 

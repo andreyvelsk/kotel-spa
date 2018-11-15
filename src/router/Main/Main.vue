@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    {{this.$store.state.sensors.sensors}}
+    
     <div class="row">
       <div class="col-xl-6">
         <div class="row">
@@ -24,6 +24,7 @@
       </div>
     </div>
     <!-- /.row -->
+    {{this.$store.state.sensors.sensors}}
   </div>
 </template>
 
