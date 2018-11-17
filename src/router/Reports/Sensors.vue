@@ -1,7 +1,7 @@
 <template>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" :id="'sensor'+sensorId" :checked='sensorChecked'>
-        <label class="form-check-label" :for="'sensor'+sensorId">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" :checked='sensorChecked'>
             {{sensorName}}
         </label>
     </div>
@@ -13,6 +13,16 @@ export default {
     sensorId: String,
     sensorName: String,
     sensorChecked: Boolean
+  },
+  computed: {
+		getSensorCheckbox: {
+			get () {
+				return this.$store.state.reportcharts.sensorscheck
+			},
+			set (value) {
+				this.$store.state.sensors.sensorcheck.checked = value
+			}
+		}
   }
 }
 </script>
