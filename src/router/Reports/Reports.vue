@@ -1,17 +1,21 @@
 <template>
     <div class="container">
-      <div class="sensors-list">
-        <sensors-report
-        v-for="sensor in this.$store.state.sensors.sensors"
-        :key="sensor.name" 
-        :sensorId="sensor.id_sensor"
-        :sensorName="sensor.name"
-        >
-        </sensors-report>
-      </div>
-        
+      {{
+        this.$store.getters.getSensorsNames
+      }}
       <div class="Chart">
           <h2>Отчет по температуре</h2>
+
+          <div class="sensors-list">
+            <sensors-report
+            v-for="sensor in this.$store.state.sensors.sensors"
+            :key="sensor.name"
+            :sensorId="sensor.id_sensor"
+            :sensorName="sensor.name"
+            >
+            </sensors-report>
+          </div>
+
           <chart-report
           v-if='this.$store.state.reportcharts.isLoaded'
           :chartData='this.$store.getters.getData'
@@ -58,5 +62,5 @@ export default {
 <style lang="sass">
   .sensors-list
     display: flex
-    justify-content: space-between
+    justify-content: space-around
 </style>

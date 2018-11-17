@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    props: {
+  props: {
     sensorId: String,
     sensorName: String
   }
