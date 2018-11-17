@@ -1,25 +1,37 @@
 <template>
     <div class="container">
-        <div class="Chart">
-            <h2>Отчет по температуре</h2>
-            <line-example
-            v-if='this.$store.state.reportcharts.isLoaded'
-            :chartData='this.$store.getters.getData'
-            ></line-example>
-            <button class="btn btn-success"
-            @click="getApiData(6)"
-            >LOAD</button>
-        </div>
+      <div class="sensors-list">
+        <sensors-report
+        v-for="sensor in this.$store.state.sensors.sensors"
+        :key="sensor.name" 
+        :sensorId="sensor.id_sensor"
+        :sensorName="sensor.name"
+        >
+        </sensors-report>
+      </div>
+        
+      <div class="Chart">
+          <h2>Отчет по температуре</h2>
+          <chart-report
+          v-if='this.$store.state.reportcharts.isLoaded'
+          :chartData='this.$store.getters.getData'
+          ></chart-report>
+          <button class="btn btn-success"
+          @click="getApiData(6)"
+          >LOAD</button>
+      </div>
         {{this.$store.getters.getData}}
     </div>
 </template>
 
 <script>
-import LineExample from './LineCharts'
+import ChartReport from './LineCharts'
+import SensorsReport from './Sensors'
 
 export default {
   components: {
-    LineExample
+    ChartReport,
+    SensorsReport
   },
   methods: {
     addData () {
@@ -43,6 +55,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="sass">
+  .sensors-list
+    display: flex
+    justify-content: space-between
 </style>

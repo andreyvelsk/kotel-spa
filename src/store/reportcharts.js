@@ -2,8 +2,9 @@ import Vue from 'vue'
 
 export default {
   state: {
-    chartdata: [],
-    isLoaded: false
+    chartdata: [], // Data for chart
+    sensorscheck: [], // checboxes, that sensors to show
+    isLoaded: false // flag for data load
   },
   mutations: {
     setChartDatasetM (state, payload) {
@@ -22,16 +23,16 @@ export default {
         }
       }
     },
-    addDataM (state) {
-      // state.chartdata[state.chartdata.length - 1].value = '45.5'
+    setSensorsCheckM (state, payload) {
+      state.sensorscheck = payload
     }
   },
   actions: {
     setChartDataset (context, payload) {
       context.commit('setChartDatasetM', payload)
     },
-    addData (context) {
-      context.commit('addDataM')
+    setSensorsCheck (context, payload) {
+      context.commit('setSensorsCheckM', payload)
     }
   },
   getters: {
