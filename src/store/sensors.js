@@ -12,6 +12,7 @@ export default {
   actions: {
     setSensorsAssync (context, payload) {
       context.commit('setSensorsAssyncM', payload)
+      context.dispatch('setSensorsCheck')
     }
   },
 

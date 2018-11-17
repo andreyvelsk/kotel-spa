@@ -8,10 +8,11 @@
 
           <div class="sensors-list">
             <sensors-report
-            v-for="sensor in this.$store.state.sensors.sensors"
+            v-for="sensor in this.$store.state.reportcharts.sensorscheck"
             :key="sensor.name"
             :sensorId="sensor.id_sensor"
             :sensorName="sensor.name"
+            :sensorChecked="sensor.checked"
             >
             </sensors-report>
           </div>
@@ -45,7 +46,7 @@ export default {
     getApiData (interval) {
       this.$api.get('getchartdata.php?interval=' + interval + '&sensor[]=2&sensor[]=4')
         .then(payload => this.$store.dispatch('setChartDataset', payload.data))
-      console.log('data from api loaded')
+      console.log('chart data from api loaded')
     }
   },
   computed: {

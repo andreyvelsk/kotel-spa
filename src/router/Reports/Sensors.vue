@@ -1,6 +1,6 @@
 <template>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" :id="'sensor'+sensorId">
+        <input class="form-check-input" type="checkbox" :id="'sensor'+sensorId" :checked='sensorChecked'>
         <label class="form-check-label" :for="'sensor'+sensorId">
             {{sensorName}}
         </label>
@@ -11,7 +11,8 @@
 export default {
   props: {
     sensorId: String,
-    sensorName: String
+    sensorName: String,
+    sensorChecked: Boolean
   }
 }
 </script>

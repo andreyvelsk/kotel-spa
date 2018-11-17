@@ -25,14 +25,19 @@ export default {
     },
     setSensorsCheckM (state, payload) {
       state.sensorscheck = payload
+      for (let i = 0; i < state.sensorscheck.length; i++) {
+        Vue.set(state.sensorscheck[i], 'checked', true)
+      }
+      console.log('load sensors check')
+      console.log(payload)
     }
   },
   actions: {
     setChartDataset (context, payload) {
       context.commit('setChartDatasetM', payload)
     },
-    setSensorsCheck (context, payload) {
-      context.commit('setSensorsCheckM', payload)
+    setSensorsCheck (context) {
+      context.commit('setSensorsCheckM', context.getters.getSensorsNames)
     }
   },
   getters: {
