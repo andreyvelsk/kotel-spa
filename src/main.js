@@ -14,13 +14,6 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 Vue.use(Vuex)
-Vue.use({
-  install (Vue) {
-    Vue.prototype.$api = axios.create({
-      baseURL: 'http://194.67.211.50/'
-    })
-  }
-})
 
 Vue.config.productionTip = false
 

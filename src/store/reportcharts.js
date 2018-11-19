@@ -28,9 +28,6 @@ export default {
     }
   },
   actions: {
-    setChartDataset (context, payload) {
-      context.commit('setChartDatasetM', payload)
-    },
     setSensorsCheck (context, payload) {
       context.commit('setSensorsCheckM', payload)
     }
@@ -38,13 +35,6 @@ export default {
   getters: {
     getData (state) {
       return state.chartdata
-    },
-    // return some properties of an object
-    getSensorsNames (state) {
-      return state.sensors.map(key => {
-        // eslint-disable-next-line camelcase
-        return (({ id_sensor, name }) => ({ id_sensor, name }))(key)
-      })
     }
   }
 }

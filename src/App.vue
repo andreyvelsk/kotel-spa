@@ -12,9 +12,13 @@ export default {
   components: {
     headerPage: Header
   },
+  methods: {
+    getSensorData () {
+      this.$store.dispatch('setSensors')
+    }
+  },
   created () {
-    this.$api.get('getjson.php')
-      .then(payload => this.$store.dispatch('setSensorsAssync', payload.data))
+    this.getSensorData()
   }
 }
 </script>

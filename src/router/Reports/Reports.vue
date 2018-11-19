@@ -1,11 +1,8 @@
 <template>
-    <div class="container">
-      
-      {{
-        this.$store.getters.getSensorsNames
-      }}
-      
-      <div class="sensors-list">
+    <div class="container" >
+      <div class="Chart">
+          <h2>Отчет по температуре</h2>
+                <div class="sensors-list">
         <sensors-report
         v-for="sensor in this.$store.getters.getSensorsNames"
         :key="sensor.id_sensor"
@@ -14,19 +11,13 @@
         >
         </sensors-report>
       </div>
-
-      <div class="Chart">
-          <h2>Отчет по температуре</h2>
-
           <chart-report
-          v-if='this.$store.state.reportcharts.isLoaded'
           :chartData='this.$store.getters.getData'
           ></chart-report>
           <button class="btn btn-success"
           @click="getApiData(6)"
           >LOAD</button>
       </div>
-        {{this.$store.getters.getData}}
     </div>
 </template>
 
@@ -41,12 +32,10 @@ export default {
   },
   methods: {
     getApiData (interval) {
-      this.$api.get('getchartdata.php?interval=' + interval + '&sensor[]=2&sensor[]=4')
-        .then(payload => this.$store.dispatch('setChartDataset', payload.data))
-      console.log('chart data from api loaded')
+      this.$store.dispatch('setChartDataset', interval)
     }
   },
-  created () {
+  mounted () {
     this.getApiData(125)
   }
 }

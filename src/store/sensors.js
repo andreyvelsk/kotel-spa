@@ -1,10 +1,12 @@
 export default {
   state: {
-    sensors: []
+    sensors: [],
+    isSensorLoaded: false
   },
   mutations: {
     setSensorsAssyncM (state, payload) {
       state.sensors = payload
+      state.isSensorLoaded = true
       console.log('Загружены данные из getjson.php')
       console.log(payload)
     }
@@ -16,5 +18,12 @@ export default {
   },
 
   getters: {
+    // return some properties of an object
+    getSensorsNames (state) {
+      return state.sensors.map(key => {
+        // eslint-disable-next-line camelcase
+        return (({ id_sensor, name }) => ({ id_sensor, name }))(key)
+      })
+    }
   }
 }
