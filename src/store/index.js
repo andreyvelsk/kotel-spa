@@ -16,17 +16,20 @@ export default new Vuex.Store({
     sensors,
     reportcharts
   },
-  state: {
-  },
   actions: {
     setChartDataset (context, interval) {
-      axios.get('http://194.67.211.50/getchartdata.php?interval=' + interval + '&sensor[]=2&sensor[]=4')
+      var sensorsId = ''
+      for (let i = 0; i < context.state.reportcharts.sensorscheck.length; i++) {
+        sensorsId += '&sensor[]=' + context.state.reportcharts.sensorscheck[i]
+      }
+      console.log(sensorsId)
+      axios.get('http://194.67.211.50/getchartdata.php?interval=' + interval + sensorsId)
         .then(payload => context.commit('setChartDatasetM', payload.data))
       console.log('chart data from api loaded')
     },
     setSensors (context) {
       axios.get('http://194.67.211.50/getjson.php')
-        .then(payload => context.commit('setSensorsAssync', payload.data))
+        .then(payload => context.commit('setSensorsAssyncM', payload.data))
     }
   }
 })

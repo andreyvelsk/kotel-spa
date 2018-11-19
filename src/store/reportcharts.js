@@ -8,7 +8,6 @@ export default {
   },
   mutations: {
     setChartDatasetM (state, payload) {
-      // state.datasets.data = payload.map(data => parseInt(data.value, 10))
       state.chartdata = payload
       console.log('setChartDataset')
       console.log(state.chartdata)
@@ -30,11 +29,15 @@ export default {
   actions: {
     setSensorsCheck (context, payload) {
       context.commit('setSensorsCheckM', payload)
+      context.dispatch('setChartDataset', 125)
     }
   },
   getters: {
     getData (state) {
       return state.chartdata
+    },
+    getSensorsCheckLength (state) {
+      return state.sensorscheck.length
     }
   }
 }

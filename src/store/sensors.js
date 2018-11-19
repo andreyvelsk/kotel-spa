@@ -12,9 +12,6 @@ export default {
     }
   },
   actions: {
-    setSensorsAssync (context, payload) {
-      context.commit('setSensorsAssyncM', payload)
-    }
   },
 
   getters: {

@@ -1,16 +1,16 @@
 <template>
     <div class="container" >
       <div class="Chart">
-          <h2>Отчет по температуре</h2>
-                <div class="sensors-list">
-        <sensors-report
-        v-for="sensor in this.$store.getters.getSensorsNames"
-        :key="sensor.id_sensor"
-        :sensorId="parseInt(sensor.id_sensor)"
-        :sensorName="sensor.name"
-        >
-        </sensors-report>
-      </div>
+        <h2>Отчет по температуре</h2>
+        <div class="sensors-list">
+            <sensors-report
+            v-for="sensor in this.$store.getters.getSensorsNames"
+            :key="sensor.id_sensor"
+            :sensorId="parseInt(sensor.id_sensor)"
+            :sensorName="sensor.name"
+            >
+            </sensors-report>
+        </div>
           <chart-report
           :chartData='this.$store.getters.getData'
           ></chart-report>

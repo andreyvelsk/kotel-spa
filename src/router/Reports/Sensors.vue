@@ -1,13 +1,13 @@
 <template>
-    <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" 
-            :value='sensorId'
-            v-model='getSensorCheckbox'
-            >
-            {{sensorName}}
-        </label>
-    </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox"
+        :value='sensorId'
+        v-model='getSensorCheckbox'
+      >
+      {{sensorName}}
+    </label>
+  </div>
 </template>
 
 <script>
@@ -17,15 +17,16 @@ export default {
     sensorName: String
   },
   computed: {
-		getSensorCheckbox: {
-			get () {
-				return this.$store.state.reportcharts.sensorscheck
-			},
-			set (value) {
-                this.$store.dispatch('setSensorsCheck', value)
-                console.log('checkbox clicked')
-			}
-		}
+    getSensorCheckbox: {
+      get () {
+        return this.$store.state.reportcharts.sensorscheck
+      },
+      set (value) {
+        this.$store.dispatch('setSensorsCheck', value)
+        console.log('checkbox clicked')
+        console.log(this.$store.state.reportcharts.sensorscheck)
+      }
+    }
   }
 }
 </script>
