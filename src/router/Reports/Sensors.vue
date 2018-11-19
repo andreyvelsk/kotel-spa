@@ -1,7 +1,10 @@
 <template>
     <div class="form-check">
         <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" :checked='sensorChecked'>
+            <input class="form-check-input" type="checkbox" 
+            :value='sensorId'
+            v-model='getSensorCheckbox'
+            >
             {{sensorName}}
         </label>
     </div>
@@ -10,9 +13,8 @@
 <script>
 export default {
   props: {
-    sensorId: String,
-    sensorName: String,
-    sensorChecked: Boolean
+    sensorId: Number,
+    sensorName: String
   },
   computed: {
 		getSensorCheckbox: {
@@ -20,7 +22,8 @@ export default {
 				return this.$store.state.reportcharts.sensorscheck
 			},
 			set (value) {
-				this.$store.state.sensors.sensorcheck.checked = value
+                this.$store.dispatch('setSensorsCheck', value)
+                console.log('checkbox clicked')
 			}
 		}
   }

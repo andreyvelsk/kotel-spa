@@ -7,6 +7,7 @@ import reportcharts from './reportcharts'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  strict: true,
   modules: {
     menu,
     sensors,
