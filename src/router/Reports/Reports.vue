@@ -13,7 +13,8 @@
         </div>
           <chart-report
           :chartData='this.$store.getters.getData'
-          ></chart-report>
+          >
+          </chart-report>
           <button class="btn btn-success"
           @click="getApiData(6)"
           >LOAD</button>

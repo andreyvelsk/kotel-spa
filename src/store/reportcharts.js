@@ -9,17 +9,18 @@ export default {
   mutations: {
     setChartDatasetM (state, payload) {
       state.chartdata = payload
+      function getRandomColor (id) {
+        const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+        const randomByte = () => randomNumber(0, 255)
+        const randomCssRgba = () => `rgba(${[randomByte(), randomByte(), randomByte(), '0.3'].join(',')})`
+        return randomCssRgba()
+      }
+      for (let i = 0; i < state.chartdata.datasets.length; i++) {
+        Vue.set(state.chartdata.datasets[i], 'backgroundColor', getRandomColor())
+      }
+
       console.log('setChartDataset')
       console.log(state.chartdata)
-
-      for (let i = 0; i < state.chartdata.datasets.length; i++) {
-        if (i === 0) {
-          Vue.set(state.chartdata.datasets[i], 'backgroundColor', 'rgba(255,0,0,0.3)')
-        }
-        if (i === 1) {
-          Vue.set(state.chartdata.datasets[i], 'backgroundColor', 'rgba(0,244,0,0.3)')
-        }
-      }
       state.isLoaded = true
     },
     setSensorsCheckM (state, payload) {
