@@ -9,14 +9,26 @@ export default {
   mutations: {
     setChartDatasetM (state, payload) {
       state.chartdata = payload
-      function getRandomColor (id) {
-        const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
-        const randomByte = () => randomNumber(0, 255)
-        const randomCssRgba = () => `rgba(${[randomByte(), randomByte(), randomByte(), '0.3'].join(',')})`
-        return randomCssRgba()
+
+      function getColorById (id) {
+        let colorBin = ''
+        colorBin = id.toString(2)
+        if (colorBin.length < 3) {
+          let length = colorBin.length
+          for (let i = length; i < 3; i++) {
+            colorBin = '0' + colorBin
+          }
+        }
+        function reverse (s) {
+          return s.split('').reverse().join('')
+        }
+        colorBin = reverse(colorBin)
+        return `rgba(${[255 * colorBin[0], 255 * colorBin[1], 255 * colorBin[2], 0.1].join(',')})`
       }
+
+      getColorById(6)
       for (let i = 0; i < state.chartdata.datasets.length; i++) {
-        Vue.set(state.chartdata.datasets[i], 'backgroundColor', getRandomColor())
+        Vue.set(state.chartdata.datasets[i], 'backgroundColor', getColorById(i + 1))
       }
 
       console.log('setChartDataset')
@@ -30,7 +42,7 @@ export default {
   actions: {
     setSensorsCheck (context, payload) {
       context.commit('setSensorsCheckM', payload)
-      context.dispatch('setChartDataset', 125)
+      context.dispatch('setChartDataset', 150)
     }
   },
   getters: {
