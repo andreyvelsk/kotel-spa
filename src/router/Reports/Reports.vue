@@ -37,7 +37,7 @@ export default {
     }
   },
   mounted () {
-    this.getApiData(125)
+    this.getApiData(this.$store.state.reportcharts.interval)
   }
 }
 </script>

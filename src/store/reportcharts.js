@@ -4,6 +4,7 @@ export default {
   state: {
     chartdata: [], // Data for chart
     sensorscheck: [1], // checboxes, that sensors to show
+    interval: 150, // interval of data for chart in hours
     isLoaded: false // flag for data load
   },
   mutations: {
@@ -27,8 +28,8 @@ export default {
       }
 
       getColorById(6)
-      for (let i = 0; i < state.chartdata.datasets.length; i++) {
-        Vue.set(state.chartdata.datasets[i], 'backgroundColor', getColorById(i + 1))
+      for (let i = 0; i < state.sensorscheck.length; i++) {
+        Vue.set(state.chartdata.datasets[i], 'backgroundColor', getColorById(state.sensorscheck[i]))
       }
 
       console.log('setChartDataset')
@@ -42,7 +43,7 @@ export default {
   actions: {
     setSensorsCheck (context, payload) {
       context.commit('setSensorsCheckM', payload)
-      context.dispatch('setChartDataset', 150)
+      context.dispatch('setChartDataset', context.state.interval)
     }
   },
   getters: {
