@@ -9,6 +9,7 @@ export default ({
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        pointBorderColor: 'red',
         legend: {
           display: true,
           onClick: function () { return 0 }

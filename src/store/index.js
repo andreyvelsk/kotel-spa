@@ -22,7 +22,7 @@ export default new Vuex.Store({
       for (let i = 0; i < context.state.reportcharts.sensorscheck.length; i++) {
         sensorsId += '&sensor[]=' + context.state.reportcharts.sensorscheck[i]
       }
-      console.log(sensorsId)
+
       axios.get('http://194.67.211.50/getchartdata.php?interval=' + interval + sensorsId)
         .then(payload => context.commit('setChartDatasetM', payload.data))
       console.log('chart data from api loaded')

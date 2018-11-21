@@ -23,7 +23,6 @@
       </div>
     </div>
     <!-- /.row -->
-    {{this.$store.state.sensors.sensors}}
   </div>
 </template>
 
