@@ -2,15 +2,8 @@
     <div class="container" >
       <div class="Chart">
         <h2>Отчет по температуре</h2>
-        <div class="sensors-list">
-            <sensors-report
-            v-for="sensor in this.$store.getters.getSensorsNames"
-            :key="sensor.id_sensor"
-            :sensorId="parseInt(sensor.id_sensor)"
-            :sensorName="sensor.name"
-            >
-            </sensors-report>
-        </div>
+          <intervals-report></intervals-report>
+          <sensors-report></sensors-report>
           <chart-report
           :chartData='this.$store.getters.getData'
           >
@@ -25,11 +18,13 @@
 <script>
 import ChartReport from './LineCharts'
 import SensorsReport from './Sensors'
+import IntervalsReport from './Intervals'
 
 export default {
   components: {
     ChartReport,
-    SensorsReport
+    SensorsReport,
+    IntervalsReport
   },
   methods: {
     getApiData (interval) {
@@ -43,7 +38,5 @@ export default {
 </script>
 
 <style lang="sass">
-  .sensors-list
-    display: flex
-    justify-content: space-around
+
 </style>

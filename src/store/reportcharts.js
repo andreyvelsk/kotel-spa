@@ -4,7 +4,7 @@ export default {
   state: {
     chartdata: [], // Data for chart
     sensorscheck: [1], // checboxes, that sensors to show
-    interval: 160, // interval of data for chart in hours
+    interval: 3, // interval of data for chart in hours
     isLoaded: false // flag for data load
   },
   mutations: {
@@ -30,8 +30,7 @@ export default {
       function getColorId (id) {
         if (state.sensorscheck.length > 0) {
           return state.sensorscheck[id]
-        }
-        else {
+        } else {
           return 1
         }
       }

@@ -1,12 +1,17 @@
 <template>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input class="form-check-input" type="checkbox"
-        :value='sensorId'
-        v-model='getSensorCheckbox'
-      >
-      {{sensorName}}
-    </label>
+  <div class="sensors-list">
+    <div class="form-check"
+      v-for="sensor in this.$store.getters.getSensorsNames"
+      :key="sensor.id_sensor"
+    >
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox"
+          :value='parseInt(sensor.id_sensor)'
+          v-model='getSensorCheckbox'
+        >
+          <span>{{sensor.name}}</span>
+      </label>
+    </div>
   </div>
 </template>
 
@@ -32,6 +37,19 @@ export default {
 </script>
 
 <style lang="sass">
-    .form-check
-        display: inline-block
+  .sensors-list
+    display: flex
+    justify-content: flex-start
+    margin-bottom: 20px
+    input
+      display: none
+      &:checked+span
+        background-color: #28a745
+        color: #fff
+      &+span
+        padding: 10px
+        border-radius: 10px
+        background-color: #ececec
+  .form-check
+      display: inline-block
 </style>
