@@ -36,7 +36,7 @@ export default {
   .sensors-list
     display: flex
     justify-content: flex-start
-    margin-bottom: 20px
+    margin-bottom: 30px
     input
       display: none
       &:checked+span

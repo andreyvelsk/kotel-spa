@@ -1,16 +1,12 @@
 <template>
     <div class="container" >
       <div class="Chart">
-        <h2>Отчет по температуре</h2>
           <intervals-report></intervals-report>
           <sensors-report></sensors-report>
           <chart-report
           :chartData='this.$store.getters.getData'
           >
           </chart-report>
-          <button class="btn btn-success"
-          @click="getApiData(6)"
-          >LOAD</button>
       </div>
     </div>
 </template>
