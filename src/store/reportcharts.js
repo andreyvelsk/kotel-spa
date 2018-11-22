@@ -4,6 +4,11 @@ export default {
   state: {
     chartdata: [], // Data for chart
     sensorscheck: [1], // checboxes, that sensors to show
+    intervals: [
+      {name: '3H', value: 3},
+      {name: '6H', value: 6},
+      {name: '12H', value: 12}
+    ],
     interval: 3, // interval of data for chart in hours
     isLoaded: false // flag for data load
   },
@@ -46,11 +51,20 @@ export default {
     },
     setSensorsCheckM (state, payload) {
       state.sensorscheck = payload
+    },
+    setIntervalM (state, payload) {
+      state.interval = payload
+      console.log(state.interval)
+      console.log(state.intervals)
     }
   },
   actions: {
     setSensorsCheck (context, payload) {
       context.commit('setSensorsCheckM', payload)
+      context.dispatch('setChartDataset', context.state.interval)
+    },
+    setInterval (context, payload) {
+      context.commit('setIntervalM', payload)
       context.dispatch('setChartDataset', context.state.interval)
     }
   },

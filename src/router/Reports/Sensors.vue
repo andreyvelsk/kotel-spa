@@ -17,10 +17,6 @@
 
 <script>
 export default {
-  props: {
-    sensorId: Number,
-    sensorName: String
-  },
   computed: {
     getSensorCheckbox: {
       get () {
