@@ -7,7 +7,8 @@ export default {
     intervals: [
       {name: '3H', value: 3},
       {name: '6H', value: 6},
-      {name: '12H', value: 12}
+      {name: '12H', value: 12},
+      {name: '24H', value: 24}
     ],
     interval: 3, // interval of data for chart in hours
     isLoaded: false // flag for data load
@@ -51,6 +52,7 @@ export default {
     },
     setSensorsCheckM (state, payload) {
       state.sensorscheck = payload
+      console.log('setSensorsCheck done')
     },
     setIntervalM (state, payload) {
       state.interval = payload
@@ -60,8 +62,17 @@ export default {
   },
   actions: {
     setSensorsCheck (context, payload) {
-      context.commit('setSensorsCheckM', payload)
-      context.dispatch('setChartDataset', context.state.interval)
+      context.dispatch('setSensorsCheckPromise', payload)
+        .then(context.dispatch('setChartDataset', context.state.interval))
+      // context.commit('setSensorsCheckM', payload)
+      // context.dispatch('setChartDataset', context.state.interval)
+    },
+    setSensorsCheckPromise ({ commit }, payload) {
+      return new Promise((resolve) => {
+        commit('setSensorsCheckM', payload)
+        console.log('setSensorsCheckPromise')
+        resolve()
+      })
     },
     setInterval (context, payload) {
       context.commit('setIntervalM', payload)

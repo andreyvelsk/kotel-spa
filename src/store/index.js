@@ -24,12 +24,17 @@ export default new Vuex.Store({
       }
 
       axios.get('http://194.67.211.50/getchartdata.php?interval=' + interval + sensorsId)
-        .then(payload => context.commit('setChartDatasetM', payload.data))
-      console.log('chart data from api loaded')
+        .then(payload => {
+          context.commit('setChartDatasetM', payload.data)
+          console.log('chart data from API loaded')
+        }, console.log('error loading API chart data'))
     },
     setSensors (context) {
       axios.get('http://194.67.211.50/getjson.php')
-        .then(payload => context.commit('setSensorsAssyncM', payload.data))
+        .then(payload => {
+          context.commit('setSensorsAssyncM', payload.data)
+          console.log('sensors data from api loaded')
+        }, console.log('error loading API sensors data'))
     }
   }
 })
