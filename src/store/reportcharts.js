@@ -61,9 +61,9 @@ export default {
     }
   },
   actions: {
-    setSensorsCheck (context, payload) {
-      context.dispatch('setSensorsCheckPromise', payload)
-        .then(context.dispatch('setChartDataset', context.state.interval))
+    setSensorsCheck ({ dispatch, state }, payload) {
+      dispatch('setSensorsCheckPromise', payload)
+        .then(dispatch('setChartDataset', state.interval))
       // context.commit('setSensorsCheckM', payload)
       // context.dispatch('setChartDataset', context.state.interval)
     },
@@ -74,9 +74,9 @@ export default {
         resolve()
       })
     },
-    setInterval (context, payload) {
-      context.dispatch('setIntervalPromise', payload)
-        .then(context.dispatch('setChartDataset', context.state.interval))
+    setInterval ({ dispatch, state }, payload) {
+      dispatch('setIntervalPromise', payload)
+        .then(dispatch('setChartDataset', state.interval))
       // context.commit('setIntervalM', payload)
       // context.dispatch('setChartDataset', context.state.interval)
     },
