@@ -68,15 +68,24 @@ export default {
       // context.dispatch('setChartDataset', context.state.interval)
     },
     setSensorsCheckPromise ({ commit }, payload) {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         commit('setSensorsCheckM', payload)
         console.log('setSensorsCheckPromise')
         resolve()
       })
     },
     setInterval (context, payload) {
-      context.commit('setIntervalM', payload)
-      context.dispatch('setChartDataset', context.state.interval)
+      context.dispatch('setIntervalPromise', payload)
+        .then(context.dispatch('setChartDataset', context.state.interval))
+      // context.commit('setIntervalM', payload)
+      // context.dispatch('setChartDataset', context.state.interval)
+    },
+    setIntervalPromise ({commit}, payload) {
+      return new Promise(resolve => {
+        commit('setIntervalM', payload)
+        console.log('setIntervalPromise')
+        resolve()
+      })
     }
   },
   getters: {
