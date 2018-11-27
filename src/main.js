@@ -5,7 +5,6 @@ import App from './App'
 import router from './router'
 import store from './store'
 import Vuex from 'vuex'
-import axios from 'axios'
 
 // Bootstrap import
 import BootstrapVue from 'bootstrap-vue'
