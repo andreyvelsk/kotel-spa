@@ -23,7 +23,11 @@ export default new Vuex.Store({
         sensorsId += '&sensor[]=' + context.state.reportcharts.sensorscheck[i]
       }
 
-      axios.get('http://194.67.211.50/getchartdata.php?interval=' + interval + sensorsId)
+      var period = Math.round(interval / 2) // period of data (for example, select every 10 minute)
+
+      console.log('current period: ' + period)
+
+      axios.get('http://194.67.211.50/getchartdata.php?period=' + period + '&interval=' + interval + sensorsId)
         .then(payload => {
           context.commit('setChartDatasetM', payload.data)
           console.log('API chart data is loaded')
