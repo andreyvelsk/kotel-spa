@@ -27,7 +27,7 @@ export default new Vuex.Store({
 
       console.log('current period: ' + period)
 
-      axios.get('http://194.67.211.50/getchartdata.php?period=' + period + '&interval=' + interval + sensorsId)
+      axios.get('http://194.67.205.200/getchartdata.php?period=' + period + '&interval=' + interval + sensorsId)
         .then(payload => {
           context.commit('setChartDatasetM', payload.data)
           console.log('API chart data is loaded')
@@ -36,7 +36,7 @@ export default new Vuex.Store({
         )
     },
     setSensors (context) {
-      axios.get('http://194.67.211.50/getjson.php')
+      axios.get('http://194.67.205.200/getjson.php')
         .then(payload => {
           context.commit('setSensorsAssyncM', payload.data)
           console.log('sensors data from api loaded')
